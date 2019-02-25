@@ -1,4 +1,5 @@
 /**
+ * Mai Nou Yang & Nathan Moder
  * 1-to-2 demultiplexer:
  * {a,b} = {in,0} if sel == 0
  *         {0,in} if sel == 1
@@ -8,5 +9,7 @@ CHIP DMux {
     OUT a, b;
 
     PARTS:
-    	
+    	Not(in=sel, out=notSel);
+			And(a=in, b=notSel, out=a);
+			And(a=in, b=sel, out=b);
 }

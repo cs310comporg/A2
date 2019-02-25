@@ -1,4 +1,5 @@
 /**
+ * Mai Nou Yang & Nathan Moder
  * 1-to-4 demultiplexer:
  * {a,b,c,d} = {in,0,0,0} if sel == 00
  *             {0,in,0,0} if sel == 01
@@ -10,5 +11,7 @@ CHIP DMux4Way {
     OUT a, b, c, d;
 
     PARTS:
-    // Implementation missing
+    	DMux(in=in, sel=sel[1], a=out1a, b=out1b);
+			DMux(in=out1a, sel=sel[0], a=a, b=b);
+			DMux(in=out1b, sel=sel[0], a=c, b=d);
 }
